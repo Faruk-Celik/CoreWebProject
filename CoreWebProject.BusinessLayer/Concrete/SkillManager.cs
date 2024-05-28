@@ -1,4 +1,5 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace CoreWebProject.BusinessLayer.Concrete
 {
     public class SkillManager : ISkillService
     {
+        private readonly ISkillDal _skillDal;
+
+        public SkillManager ( ISkillDal skillDal )
+        {
+            _skillDal = skillDal;
+        }
+
         public void TAdd ( Skill t )
         {
             throw new NotImplementedException();
@@ -27,7 +35,7 @@ namespace CoreWebProject.BusinessLayer.Concrete
 
         public List<Skill> TGetList ()
         {
-            throw new NotImplementedException();
+            return _skillDal.GetList();
         }
 
         public void TUpdate ( Skill t )

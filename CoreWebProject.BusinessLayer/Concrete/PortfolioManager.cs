@@ -1,4 +1,5 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace CoreWebProject.BusinessLayer.Concrete
 {
     public class PortfolioManager : IPortfolioSevice
     {
+        private readonly IPortfolioDal _portfolioDal;
+
+        public PortfolioManager ( IPortfolioDal portfolioDal )
+        {
+            _portfolioDal = portfolioDal;
+        }
+
         public void TAdd ( Portfolio t )
         {
             throw new NotImplementedException();
@@ -27,7 +35,7 @@ namespace CoreWebProject.BusinessLayer.Concrete
 
         public List<Portfolio> TGetList ()
         {
-            throw new NotImplementedException();
+            return _portfolioDal.GetList();
         }
 
         public void TUpdate ( Portfolio t )

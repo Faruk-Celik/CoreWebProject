@@ -1,4 +1,5 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,24 +11,30 @@ namespace CoreWebProject.BusinessLayer.Concrete
 {
     public class ServiceManager : IServiceService
     {
+        private readonly IServiceDal _serviceDal;
+
+        public ServiceManager ( IServiceDal serviceDal )
+        {
+            _serviceDal = serviceDal;
+        }
+
         public void TAdd ( Service t )
         {
-            throw new NotImplementedException();
+            _serviceDal.Insert(t);
         }
 
         public void TDelete ( Service t )
         {
-            throw new NotImplementedException();
+            _serviceDal.Delete(t);
         }
 
         public Service TGetById ( int id )
         {
-            throw new NotImplementedException();
-        }
+            return _serviceDal.GetById(id);        }
 
         public List<Service> TGetList ()
         {
-            throw new NotImplementedException();
+           return _serviceDal.GetList();
         }
 
         public void TUpdate ( Service t )

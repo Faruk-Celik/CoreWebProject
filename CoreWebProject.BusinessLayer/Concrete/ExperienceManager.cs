@@ -1,8 +1,10 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +12,13 @@ namespace CoreWebProject.BusinessLayer.Concrete
 {
     public class ExperienceManager : IExperienceService
     {
+        private readonly IExperienceDal _experienceDal;
+
+        public ExperienceManager ( IExperienceDal experienceDal )
+        {
+            _experienceDal = experienceDal;
+        }
+
         public void TAdd ( Experience t )
         {
             throw new NotImplementedException();
@@ -27,7 +36,7 @@ namespace CoreWebProject.BusinessLayer.Concrete
 
         public List<Experience> TGetList ()
         {
-            throw new NotImplementedException();
+            return  _experienceDal.GetList();
         }
 
         public void TUpdate ( Experience t )

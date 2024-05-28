@@ -1,4 +1,5 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace CoreWebProject.BusinessLayer.Concrete
 {
     public class TestimonialManager : ITestimonialService
     {
+        private readonly ITestimonialDal _testimonialDal;
+
+        public TestimonialManager ( ITestimonialDal testimonialDal )
+        {
+            _testimonialDal = testimonialDal;
+        }
+
         public void TAdd ( Testimonial t )
         {
             throw new NotImplementedException();
@@ -27,7 +35,7 @@ namespace CoreWebProject.BusinessLayer.Concrete
 
         public List<Testimonial> TGetList ()
         {
-            throw new NotImplementedException();
+            return _testimonialDal.GetList();
         }
 
         public void TUpdate ( Testimonial t )

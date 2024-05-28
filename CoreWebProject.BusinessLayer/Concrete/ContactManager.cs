@@ -1,4 +1,5 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace CoreWebProject.BusinessLayer.Concrete
 {
     public class ContactManager : IContactService
     {
+        private readonly IContactDal _contactDal;
+
+        public ContactManager ( IContactDal contactDal )
+        {
+            _contactDal = contactDal;
+        }
+
         public void TAdd ( Contact t )
         {
             throw new NotImplementedException();
@@ -27,7 +35,7 @@ namespace CoreWebProject.BusinessLayer.Concrete
 
         public List<Contact> TGetList ()
         {
-            throw new NotImplementedException();
+            return _contactDal.GetList();
         }
 
         public void TUpdate ( Contact t )

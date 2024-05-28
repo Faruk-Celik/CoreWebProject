@@ -1,4 +1,5 @@
 ﻿using CoreWebProject.BusinessLayer.Abstract;
+using CoreWebProject.DataAccessLayer.Abstract;
 using CoreWebProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,18 @@ using System.Threading.Tasks;
 
 namespace CoreWebProject.BusinessLayer.Concrete
 {
-    public class MessageManager : IMessageService
+    public class MessageManager : IMessageService   
     {
+        private readonly IMessageDal _messageDal;
+
+        public MessageManager ( IMessageDal messageDal )
+        {
+            _messageDal = messageDal;
+        }
+
         public void TAdd ( Message t )
         {
-            throw new NotImplementedException();
+            _messageDal.Insert(t);
         }
 
         public void TDelete ( Message t )

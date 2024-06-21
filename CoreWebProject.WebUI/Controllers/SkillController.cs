@@ -32,5 +32,32 @@ namespace CoreWebProject.WebUI.Controllers
             SkillManager.TAdd(skill);
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteSkill (int id)
+        {
+            var value = SkillManager.TGetById(id);
+            SkillManager.TDelete(value);
+            return RedirectToAction("Index");
+        }
+     
+        [HttpGet]
+        public IActionResult UpdateSkill (int id)
+        {
+
+            ViewBag.v1 = "Update Skill";
+            ViewBag.v2 = "Skill";
+            ViewBag.v3 = "Update Skill";
+
+            var value = SkillManager.TGetById(id);
+            return View(value);
+        }
+        
+        [HttpPost]
+        public IActionResult UpdateSkill (Skill skill)
+        {
+            SkillManager.TUpdate(skill);
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

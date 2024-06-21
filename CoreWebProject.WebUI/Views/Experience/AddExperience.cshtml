@@ -1,0 +1,27 @@
+﻿@model CoreWebProject.EntityLayer.Concrete.Experience
+@{
+    ViewData ["Title"] = "AddExperience";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("AddExperience", "Experience", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.ExperienceId)
+    <br>
+    @Html.Label("Experience Name")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <label>Experience Date</label>
+    @Html.TextBoxFor(x=> x.SDate, new { @class = "form-control" })
+    <br />
+    <label>ImageURl</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+
+
+    <label>Experience Description</label>
+
+    @Html.TextAreaFor(x => x.Description,10,3, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Save</button>
+}

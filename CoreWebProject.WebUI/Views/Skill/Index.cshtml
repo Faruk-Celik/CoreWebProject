@@ -3,7 +3,7 @@
 @model List<Skill>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData ["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -24,35 +24,37 @@
             </tr>
         </thead>
         <tbody class="list">
-          
+
             @foreach (var item in Model)
             {
-                
-            <tr>
-                <th>
-                    @item.SkillId
-                </th>
-                <td class="budget">
-                    @item.SkillName
-                </td>
-                
-            
-                <td>
-                    <div class="d-flex align-items-center">
-                        <span class="completion mr-2">@item.SkillValue %</span>
-                        <div>
-                            <div class="progress">
+
+                <tr>
+                    <th>
+                        @item.SkillId
+                    </th>
+                    <td class="budget">
+                        @item.SkillName
+                    </td>
+
+
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="completion mr-2">@item.SkillValue %</span>
+                            <div>
+                                <div class="progress">
                                     <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@item.SkillValue" aria-valuemin="0" aria-valuemax="100" style="width: @item.SkillValue%;"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </td>
-                <td><a href="#" class="btn btn-warning"> Delete</a></td>
-                <td><a href="#" class="btn btn-info"> Edit</a></td>
-               
-            </tr>
+                    </td>
+                    <td><a href="/Skill/DeleteSkill/@item.SkillId" class="btn btn-warning"> Delete</a></td>
+                    <td>
+                        <a href="/Skill/UpdateSkill/@item.SkillId" class="btn btn-info"> Edit</a>
+                    </td>
+
+                </tr>
             }
-          
+
         </tbody>
     </table>
     <br />
